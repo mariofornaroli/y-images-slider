@@ -1,0 +1,79 @@
+* {
+    margin    : 0;
+    padding   : 0;
+    box-sizing: border-box;
+}
+
+/* CSS variables */
+:root {
+    --itemSize        : 400px;
+    --negativeItemSize: -400px;
+}
+
+body {
+    background     : linear-gradient(20deg, #1b1b1b, #696969);
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    min-height     : 100vh;
+    width          : 100%;
+}
+
+.container {
+    width     : var(--itemSize);
+    height    : var(--itemSize);
+    position  : relative;
+    overflow  : hidden;
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.45);
+}
+
+.item {
+    position  : absolute;
+    width     : 100%;
+    height    : 100%;
+    left      : var(--itemSize);
+    transition: left 1s;
+}
+
+.item img {
+    width: 100%;
+}
+
+.item.previous-active {
+    left   : var(--negativeItemSize);
+    z-index: 1;
+}
+
+.item.active {
+    z-index: 2;
+    left   : 0;
+}
+
+#controlContainer {
+    position  : absolute;
+    bottom    : 20px;
+    left      : 50%;
+    transform : translateX(-50%);
+    z-index   : 3;
+    display   : flex;
+    list-style: none;
+}
+
+#controlContainer li {
+    width           : 14px;
+    height          : 14px;
+    background-color: transparent;
+    border          : 2px solid #fff;
+    border-radius   : 50%;
+    cursor          : pointer;
+    margin-right    : 16px;
+}
+
+#controlContainer li:last-child {
+    margin-right: 0;
+}
+
+#controlContainer li.active {
+    background-color: #ffffffb0;
+    box-shadow      : 0 0 4px #ffffff80;
+}
